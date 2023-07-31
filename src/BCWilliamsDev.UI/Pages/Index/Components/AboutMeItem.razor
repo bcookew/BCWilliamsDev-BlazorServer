@@ -1,0 +1,18 @@
+﻿<div class="grid-container">
+    <span class="about-me-paragraph-heading mud-typography-h6">
+        @Heading
+    </span>
+    <div>
+        <div class="divider" />
+    </div>
+    <MudText>
+        @BodyText
+    </MudText>
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public required string Heading { get; set; }
+    [Parameter, EditorRequired]
+    public required string BodyText { get; set; }
+}

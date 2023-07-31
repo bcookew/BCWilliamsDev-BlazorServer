@@ -1,0 +1,16 @@
+﻿@inject ContactFormService contactFormService
+
+<MudMenu AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight" >
+    <ActivatorContent>
+        <MudIconButton Size="Size.Medium" Color="Color.Inherit" Icon="@Icons.Material.Outlined.Menu" />
+    </ActivatorContent>
+    <ChildContent>
+        <MudMenuItem Href="/AboutMe">About</MudMenuItem>
+        <MudMenuItem Href="/Projects">Projects</MudMenuItem>
+        <MudMenuItem OnTouch="OpenMenu" OnClick="OpenMenu">Contact</MudMenuItem>
+    </ChildContent>
+</MudMenu>
+
+@code {
+    private void OpenMenu() => contactFormService.FormIsOpen = true;
+}

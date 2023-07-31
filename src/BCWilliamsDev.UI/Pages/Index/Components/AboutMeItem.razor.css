@@ -1,0 +1,35 @@
+﻿.about-me-paragraph-heading {
+    text-align: end;
+}
+
+.divider {
+    border: solid 1px #4DB6AC;
+    border-radius: 5px;
+    height: 4.5em;
+    width: 2px;
+    margin: auto .75em;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 108px auto auto;
+    min-width: 600px;
+    align-items: center;
+}
+
+@media (max-width: 700px) {
+    .grid-container {
+        display: block;
+        min-width: unset;
+    }
+
+    .about-me-paragraph-heading {
+        text-align: start;
+    }
+
+    .divider {
+        height: 2px;
+        width: 80%;
+        margin: 1em 0;
+    }
+}

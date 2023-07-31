@@ -1,0 +1,33 @@
+﻿@page "/Projects"
+@inject ICmsCaller _cms
+
+<PageTitle>Projects - B C Williams | Dev</PageTitle>
+
+<MudGrid Justify="Justify.Center" Spacing="0">
+    @if (_projectCards.Length < 1)
+    {
+        @for (var i = 0; i < 6; i++)
+        {
+            <ProjectCard />
+        }
+
+    }
+    else
+    {
+        @foreach (var project in _projectCards)
+        {
+            <ProjectCard Model="project" />
+        }
+
+    }
+</MudGrid>
+
+
+@code {
+    private ProjectCardModel[] _projectCards = new ProjectCardModel[] {};
+
+    protected override async Task OnInitializedAsync()
+    {
+        _projectCards = await _cms.GetProjectCardsAsync();
+    }
+}

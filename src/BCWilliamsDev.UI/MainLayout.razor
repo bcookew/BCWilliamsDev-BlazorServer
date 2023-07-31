@@ -1,0 +1,44 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider Theme="_theme" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+<WelcomeSplash OnLoadComplete="LoadingComplete" />
+<MudAppBar Color="Color.Primary" Elevation="4">
+    <MudLink Underline="Underline.None" Href="/" Color="Color.Inherit" Typo="Typo.h5">B C Williams | Dev</MudLink>
+    <MudSpacer />
+    <div class="d-none d-md-flex">
+        <NavGroup />
+    </div>
+    <div class="d-flex d-md-none">
+        <NavMenuMobile />
+    </div>
+</MudAppBar>
+
+<MudLayout>
+    <MudMainContent>
+        @if (!_loading)
+        {
+            <div style="position:relative; display:flex; justify-content:center;">
+                <ContactMe />
+            </div>
+            <MudContainer Class="d-flex justify-center py-8 px-0" MaxWidth="MaxWidth.ExtraLarge">
+                @Body
+            </MudContainer>
+        }
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    private bool _loading = true;
+
+    protected void LoadingComplete() => _loading = false;
+
+    private MudTheme _theme = new()
+    {
+        Palette = new PaletteLight()
+        {
+            Primary = Colors.Teal.Darken2
+        }
+    };
+}

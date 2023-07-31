@@ -1,0 +1,42 @@
+﻿.project-card {
+    width: 400px;
+}
+
+.project-card-title {
+    padding: 1em 1em;
+}
+
+.project-card-list {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+
+.project-card-body {
+    padding: 14px;
+}
+.mud-grid-item {
+    padding: 15px;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.project-card-hero-image {
+    width: 100%;
+    aspect-ratio: 1.5;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (max-width: 500px){
+    .project-card {
+        width: 100vw;
+    }
+
+
+    .mud-grid-item {
+        padding: 15px 0px;
+    }
+    .mud-grid-item:first-of-type {
+        padding-top: 0;
+    }
+}

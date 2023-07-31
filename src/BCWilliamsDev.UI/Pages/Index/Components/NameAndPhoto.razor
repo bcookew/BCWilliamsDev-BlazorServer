@@ -1,0 +1,84 @@
+﻿<div class="d-none d-md-flex justify-center">
+    <MudStack Row AlignItems="AlignItems.Center">
+        <MudItem>
+            <MudImage Class="image-fix" Src="./images/bcw-headshot.jpg" Width="260" Alt="Headshot of Benjamin C Williams" Fluid />
+        </MudItem>
+        <MudItem>
+            <MudGrid Spacing="2" Class="no-padding no-margin">
+                <MudItem Class="name-stroke-container no-padding">
+                    <MudDivider Class="teal lighten-2 name-stroke no-padding" Vertical />
+                </MudItem>
+                <MudItem>
+                    <MudText Class="name-text">
+                        Benjamin<br />
+                        Cooke<br />
+                        Williams<br />
+                        Dev
+                    </MudText>
+                </MudItem>
+            </MudGrid>
+        </MudItem>
+    </MudStack>
+</div>
+<div class="d-flex d-md-none justify-center">
+    <MudStack AlignItems="AlignItems.Center">
+        <MudImage Class="image-fix" Src="./images/bcw-headshot.jpg" Width="260" Alt="Headshot of Benjamin C Williams" Fluid />
+        <MudDivider Class="teal lighten-2 name-stroke-mobile" />
+        <MudText Class="name-text">
+            Benjamin<br />
+            Cooke<br />
+            Williams<br />
+            Dev
+        </MudText>
+    </MudStack>
+</div>
+
+@code {
+
+}
+
+<style>
+    .photo-and-name {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .name-stroke {
+        border: solid 2px #4DB6AC;
+        height: 80%;
+        border-radius: 5px;
+    }
+
+    .name-stroke-mobile {
+        border: solid 2px #4DB6AC;
+        border-radius: 5px;
+        width: 75%;
+        margin-top: 1em;
+    }
+
+    .name-stroke-container {
+        height: 346.66px;
+        display: flex;
+        align-items: center;
+    }
+
+    .image-fix {
+        display: block;
+        border-radius: 5px;
+    }
+
+    .name-text {
+        font-family: "Roboto", sans-serif;
+        font-size: 5.2em;
+        line-height: 1.2em;
+        font-weight: 300;
+    }
+
+    .no-margin {
+        margin: 0px !important;
+    }
+
+    .no-padding {
+        padding: 0px !important;
+    }
+</style>

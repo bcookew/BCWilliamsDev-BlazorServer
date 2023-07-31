@@ -1,0 +1,69 @@
+﻿@inject ContactFormService contactFormService
+@implements IDisposable
+
+    <MudPaper Elevation="2" Class="@(_open ? "contact-form-paper open":"contact-form-paper closed")">
+        <MudGrid>
+            <MudItem xs="12" Style="text-align:end;">
+            </MudItem>
+            <MudItem xs="12" Style="text-align:center;">
+                <MudIconButton Class="close-icon" Icon="@Icons.Material.Outlined.Close" OnClick="CloseForm" />
+                <MudText Typo="Typo.h4">Get in touch!</MudText>
+            </MudItem>
+            <MudItem xs="12">
+                <MudTextField T="string" Immediate InputType="InputType.Text" AutoFocus InputMode="InputMode.text" Counter="500" MaxLength="500" Label="Tell me about it:" Placeholder="Tell me a bit about what you want to achieve" Lines="10" />
+                <MudTextField T="string" Immediate InputType="InputType.Text" InputMode="InputMode.text" Label="Your Name" AdornmentIcon="@Icons.Material.Outlined.Email" Placeholder="Bobothy Jones" />
+                <MudTextField T="string" Immediate InputType="InputType.Email" InputMode="InputMode.email" Label="Your eMail" AdornmentIcon="@Icons.Material.Outlined.Email" Placeholder="BobothyJones@email.com" />
+                <MudStack Row Justify="Justify.SpaceAround" Class="pt-7">
+                    <MudButton Variant="Variant.Outlined" OnClick="CloseForm" ButtonType="ButtonType.Reset">Cancel</MudButton>
+                    <MudButton Variant="Variant.Outlined" Color="Color.Primary" ButtonType="ButtonType.Submit" EndIcon="@Icons.Material.Outlined.Send">Send</MudButton>
+                </MudStack>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+<style>
+
+    .contact-form-paper {
+        max-width:100vw;
+        padding: 2em;
+        z-index:100;
+        position:absolute;
+    }
+
+    .close-icon {
+        position: absolute;
+        right: 12px;
+        top: 24px;
+    }
+    .open {
+        transform:translateY(-3%);
+        transition: all 2s;
+    }
+    .closed {
+        transform: translateY(-120%);
+        transition: all 2s;
+    }
+</style>
+
+@code {
+    private bool _open
+    {
+        get => contactFormService.FormIsOpen;
+        set => contactFormService.FormIsOpen = value;
+    }
+
+    protected override void OnInitialized()
+    {
+        contactFormService.OnFormIsOpenChanged += FormIsOpenChanged;
+    }
+
+    private void FormIsOpenChanged(object? sender, EventArgs e) => StateHasChanged();
+
+    private void CloseForm() => _open = false;
+
+    public void Dispose()
+    {
+        contactFormService.OnFormIsOpenChanged -= FormIsOpenChanged;
+    }
+
+}

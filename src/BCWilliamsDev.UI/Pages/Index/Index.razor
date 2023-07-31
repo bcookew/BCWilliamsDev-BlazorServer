@@ -1,0 +1,77 @@
+﻿@page "/"
+@inject ICmsCaller _caller
+
+<PageTitle>About Me - B C Williams | Dev</PageTitle>
+
+@if (!_loading)
+{
+    <MudPaper Elevation="2" Class="about-me-paper">
+        <NameAndPhoto />
+            <MudStack Justify="Justify.Center" Spacing="10" Class="text-block-container">
+                @foreach(var para in AboutMeParagraphs)
+                {
+                    <AboutMeItem Heading="@para.Heading" BodyText="@para.BodyText" />
+                }
+                <Links />
+                <MudButton OnClick="@(async () => await _caller.GetProjectCardsAsync())">
+                    Call CMS
+                </MudButton>
+            </MudStack>
+    </MudPaper>
+}
+
+@code {
+    private bool _loading = true;
+
+    List<AboutMeParagraph> AboutMeParagraphs { get; set; } = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetAboutMeParagraphsAsync();
+        _loading = false;
+    }
+
+    private async Task GetAboutMeParagraphsAsync()
+    {
+        await Task.Delay(0);
+        AboutMeParagraphs = new()
+        {
+            new AboutMeParagraph
+            {
+                Heading = "What I bring",
+                BodyText = lorem
+            },
+            new AboutMeParagraph
+            {
+                Heading = "My stack",
+                BodyText = lorem
+            },
+            new AboutMeParagraph
+            {
+                Heading = "A little background",
+                BodyText = lorem
+            }
+        };
+    }
+
+    private const string lorem = "Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.";
+    
+    public class AboutMeParagraph
+    {
+        public required string Heading { get; set; }
+        public required string BodyText { get; set; }
+
+    }
+}
+
+<style>
+    .about-me-paper {
+        padding: 50px;
+        margin-top: 10px;
+        max-width: 1000px;
+    }
+
+    .text-block-container {
+        padding-top: 4em;
+    }
+</style>

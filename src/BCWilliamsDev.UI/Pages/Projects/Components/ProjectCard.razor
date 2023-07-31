@@ -1,0 +1,79 @@
+﻿<div class="mud-grid-item">
+    <MudPaper Elevation="2">
+        <MudStack AlignItems="AlignItems.Center">
+            <div class="project-card">
+                <img src="@(Model != null ? Model.ImageUrl : "http://placehold.co/400x266.webp")" alt="" class="project-card-hero-image" />
+                <div class="project-card-title">
+                    @if(Model == null)
+                    {
+                        <MudText Align="Align.Center" Typo="Typo.h4">
+                            <MudSkeleton SkeletonType="SkeletonType.Text" />
+                        </MudText>
+                    }
+                    else
+                    {
+                        <MudText Align="Align.Center" Typo="Typo.h4">@Model.Name</MudText>
+                    }
+                </div>
+                <div class="project-card-body">
+                    <MudStack>
+                        <div>
+                            <MudText Typo="Typo.h6">The Brief:</MudText>
+                            @if(Model == null)
+                            {
+                                <MudText>
+                                    <MudSkeleton SkeletonType="SkeletonType.Text" />
+                                    <MudSkeleton SkeletonType="SkeletonType.Text" />
+                                    <MudSkeleton SkeletonType="SkeletonType.Text" />
+                                </MudText>
+                            }
+                            else
+                            {
+                                <MudText>@Model.Description</MudText>   
+                            }
+                        </div>
+                        <div>
+                            <MudText Typo="Typo.h6">The Stack:</MudText>
+                            <ul class="project-card-list mud-typography-body1">
+                                @if(Model == null)
+                                {
+                                    for(var i = 0; i < 4; i++)
+                                    {
+                                       <li> 
+                                           <MudSkeleton SkeletonType="SkeletonType.Text" />
+                                        </li>
+                                    }
+                                }
+                                else
+                                {
+                                    foreach(var stackItem in Model.TechStack)
+                                    {
+                                        <li>@stackItem</li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                        <MudStack Row Justify="Justify.Center">
+                            @if(Model?.GitHubUrl != null)
+                            {
+                                <a target="_blank" href="@Model.GitHubUrl">
+                                    <MudImage Height="36" Src="./images/github-mark.png" />
+                                </a>
+                            }
+                            @if(Model?.WebsiteUrl != null)
+                            {
+                                <a target="_blank" href="">
+                                    <MudIcon Color="Color.Primary" Icon="@Icons.Material.Outlined.Link" Size="Size.Large" />
+                                </a>
+                            }
+                        </MudStack>
+                    </MudStack>
+                </div>
+            </div>
+        </MudStack>
+    </MudPaper>
+</div>
+@code {
+    [Parameter]
+    public ProjectCardModel? Model { get; set; }
+}

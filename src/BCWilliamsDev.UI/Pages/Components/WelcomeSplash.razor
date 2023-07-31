@@ -1,0 +1,40 @@
+﻿@inject ILocalStorageService localStorage
+
+<MudOverlay ZIndex="1301" Visible="@_welcomeVisible" Style="@_overlayStyle">
+    <MudContainer>
+        <MudStack Class="centralize">
+            <MudText Style="@_overlayTextStyle" Typo="Typo.h1">Welcome</MudText>
+            <MudButton Size="Size.Large" OnClick="@(() => _welcomeVisible = false)"
+                       Style="@_overlayButtonStyle"
+                       Variant="Variant.Filled"
+                       StartIcon="@Icons.Material.Outlined.Login">
+                Enter
+            </MudButton>
+        </MudStack>
+    </MudContainer>
+</MudOverlay>
+
+@code {
+    private bool _welcomeVisible = false;
+    private string _overlayStyle = $"background-color:{Colors.Teal.Accent3+"99"}; backdrop-filter: blur(10px);";
+    private string _overlayTextStyle = $"color: #FFF; font-weight:400; text-shadow: 0 2px 10px {Colors.Teal.Darken3};";
+    private string _overlayButtonStyle = $"background-color:{Colors.Teal.Darken3}; color:#FFF;";
+
+    [Parameter, EditorRequired]
+    public EventCallback OnLoadComplete { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            string visitedPreviously = await localStorage.GetLocalStorageAsync("VisitedPreviously");
+
+            _welcomeVisible = (visitedPreviously != "true");
+            if (_welcomeVisible)
+            {
+                await localStorage.SetLocalStorageAsync("VisitedPreviously", true);
+            }
+            await OnLoadComplete.InvokeAsync();
+        }
+    }
+}
