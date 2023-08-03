@@ -1,5 +1,5 @@
-﻿using BCWilliamsDev.Application.Models;
-using BCWilliamsDev.CMS.Interfaces;
+﻿using BCWilliamsDev.Application.Interfaces;
+using BCWilliamsDev.Application.Models;
 using Microsoft.Extensions.Logging;
 using Sanity.Linq;
 
