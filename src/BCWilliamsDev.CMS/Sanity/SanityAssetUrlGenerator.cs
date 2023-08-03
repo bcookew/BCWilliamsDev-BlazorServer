@@ -1,5 +1,4 @@
 ﻿using Sanity.Linq;
-using static System.Net.WebRequestMethods;
 
 namespace BCWilliamsDev.CMS.Sanity
 {
