@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BCWilliamsDev.Application\BCWilliamsDev.Application.csproj" />
     <ProjectReference Include="..\BCWilliamsDev.CMS\BCWilliamsDev.CMS.csproj" />
   </ItemGroup>
 
