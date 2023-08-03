@@ -2,7 +2,7 @@
 {
     public interface IContactFormService
     {
-        bool FormIsOpen();
+        bool FormIsOpen { get; set; }
         event EventHandler? OnFormIsOpenChanged;
     }
 }

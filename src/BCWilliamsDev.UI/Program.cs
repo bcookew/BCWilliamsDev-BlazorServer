@@ -1,17 +1,11 @@
-using BCWilliamsDev.UI.Services.JsInterop;
-using BCWilliamsDev.UI.Services.JsInterop.Interfaces;
-using BCWilliamsDev.UI.Services.UI;
-using BCWilliamsDev.Abstraction;
-using MudBlazor.Services;
+using BCWilliamsDev.UI.Services.ServiceCollections;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
-builder.Services.AddScoped<ContactFormService>();
 
-builder.Services.AddMudServices();
 builder.Services.AddCmsServices();
+builder.Services.AddUIServices();
 
 var app = builder.Build();
 

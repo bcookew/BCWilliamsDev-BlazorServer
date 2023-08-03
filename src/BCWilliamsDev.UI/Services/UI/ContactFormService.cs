@@ -1,6 +1,8 @@
-﻿namespace BCWilliamsDev.UI.Services.UI
+﻿using BCWilliamsDev.UI.Services.UI.Interfaces;
+
+namespace BCWilliamsDev.UI.Services.UI
 {
-    public class ContactFormService
+    public class ContactFormService : IContactFormService
     {
         private bool _formIsOpen = false;
         public bool FormIsOpen
