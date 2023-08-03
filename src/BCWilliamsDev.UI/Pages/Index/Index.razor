@@ -1,5 +1,4 @@
 ﻿@page "/"
-@inject ICmsCaller _caller
 
 <PageTitle>About Me - B C Williams | Dev</PageTitle>
 
@@ -13,9 +12,6 @@
                     <AboutMeItem Heading="@para.Heading" BodyText="@para.BodyText" />
                 }
                 <Links />
-                <MudButton OnClick="@(async () => await _caller.GetProjectCardsAsync())">
-                    Call CMS
-                </MudButton>
             </MudStack>
     </MudPaper>
 }
@@ -39,17 +35,17 @@
             new AboutMeParagraph
             {
                 Heading = "What I bring",
-                BodyText = lorem
+                BodyText = "I believe that the best qualities I bring to any team or project are: a detail oriented nature, a passionate and driven work ethic, endless curiosity, and the absolute need for continuous self improvement."
             },
             new AboutMeParagraph
             {
                 Heading = "My stack",
-                BodyText = lorem
+                BodyText = "I am primarily a .NET developer writing software in C#. In general I use Blazor Server or WASM for UI, Entity Framework Core for database interactions, and SQL Server or MySQL for persistence. My other experience includes: Python with Flask, Vanilla JS, React.js, Express.js, Node.js, and MongoDB."
             },
             new AboutMeParagraph
             {
                 Heading = "A little background",
-                BodyText = lorem
+                BodyText = "I've been a programmer at heart since high school when we built frogger in Visual Basic, got the basics of HTML and CSS, and learned the old Macromedia suite creating WYSIWYG websites with Dreamweaver and filling them with terrible flash animations. Since then I have spent about 12 years in concert and event production as a warehouse manager, rigger, outdoor event structure designer, and project manager. I picked up coding again in 2020 as the world of live events ground to a halt. I rediscovered a love of it through Codecademy's online course in Python 3 and have been studying everything I can get my hands on since then. In 2022 I attended the Coding Dojo Full-Time Software Development Bootcamp and learned full stack basics in C# .NET, MERN, and Python w/Flask. They helped me fall in love with C# after quite a few years of sticking to Python, and since then my love of coding has only grown as I take on both personal and professional projects."
             }
         };
     }
